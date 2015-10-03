@@ -11,7 +11,7 @@ REQUEST_CONTAINER = endpoints.ResourceContainer(
 class VirtualClassRequest(messages.Message):
     username = messages.StringField(1)
 class VirtualClassResponse(messages.Message):
-    
+    items = messages.MessageField(Greeting, 1)
 
 @endpoints.api(name = 'virtualclassendpoints', version='1', description = "Backend endpoints for cirtual class")
 class VirtualClassApi(remote.Service):

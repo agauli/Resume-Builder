@@ -1,6 +1,6 @@
 from google.appengine.ext import db
 import base
-
+import table
 
 class User(db.Model):
     user_name = db.StringProperty(required=True)

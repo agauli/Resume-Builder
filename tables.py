@@ -8,13 +8,24 @@ class Questions(db.Model):
     
     @classmethod
     def create(cls, user_name, course_tag, question, date):
-        return ShoppingList(
+        return Questions(
             user_name=user_name,
             course_tag=course_tag,
             question = question,
             date = date
         )
-    
+class Courses(db.Model):
+    course_id = db.StringProperty(required = True)
+    course_name = db.StringProperty(required = True)
+    user_registered = db.StringListProperty(required = True)
+    @classmethod
+    def by_class_name(cls, course_name):
+        p = Courses.all().filter('course_name =', course_name)
+    @classmethod 
+    def register_user(cls, course_name, user_name):
+        p = by_class_name(course_name)
+        p.user_registered.append(user_name)
+        
 class Publication(db.Model):
     user_name = db.StringProperty(required=True)
     title = db.StringProperty(required=True)
