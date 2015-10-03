@@ -10,6 +10,9 @@ EMAIL_RE = re.compile("^[\S]+@[\S]+\.[\S]+$")
 PASS_RE = re.compile("^.{5,20}$")
 
 
+
+
+
 class SignUp(base.RequestHandler):
     def is_valid_name(self, username):
         if username and NAME_RE.match(username):
@@ -37,7 +40,7 @@ class SignUp(base.RequestHandler):
             return (False, 'Email is not valid')
     
     def send_confirmation_email(self, user):
-        message = mail.EmailMessage(sender="Foducate " +
+        message = mail.EmailMessage(sender="VirtualClass " +
                                     "<noreply@visitorspoint.appspotmail.com>",
                                     subject="Confirm your registration"
                                     )
@@ -51,7 +54,7 @@ class SignUp(base.RequestHandler):
         </head>
         <body>
         <div class="title-top-curved">
-           Welcome to Foducate!
+           Welcome to Virtual Class!
         </div>
         <div class="box-top-menu">
           Congratulations!
@@ -63,7 +66,7 @@ class SignUp(base.RequestHandler):
         <p>Thank you for using Foducate.</p>
         </div>
         </body>
-        </htm>
+        </html>
                <b>Welcome</b>
           """
 
@@ -119,7 +122,6 @@ class Login(base.RequestHandler):
         if u:
             if self.validate_password(u, password):
                 self.login(u)
-                self.redirect('/resume')
             else:
                 output_json['status'] = 'ERR'
                 output_json['password_error'] = 'Incorrect Password!'
@@ -144,12 +146,4 @@ class Login(base.RequestHandler):
 class Logout(base.RequestHandler):
     def get(self):
         self.logout(self.user)
-        self.redirect('/')
 
-
-class ConfirmUserSignup(base.RequestHandler):
-    def get(self):
-        self.render("welcome.html")
-
-    def post(self):
-        self.render("welcome.html")
