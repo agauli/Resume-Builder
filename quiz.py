@@ -53,6 +53,7 @@ app = webapp2.WSGIApplication([
     ('/settings', SettingsPage),
     ('/signup', signup.SignUp),
     ('/login', signup.Login),
+    ('/question', Post.Question),
     ('/logout', signup.Logout),
     ('/welcome', signup.ConfirmUserSignup),
     ('/resume', resume.Resume),

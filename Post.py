@@ -2,7 +2,7 @@ import base
 import json
 import tables
 
-class PostQuestion(base.RequestHandler):
+class Question(base.RequestHandler):
     def post(self):
         output_json = {}
         user_name = self.request.get('user_name')
