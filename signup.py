@@ -10,9 +10,6 @@ EMAIL_RE = re.compile("^[\S]+@[\S]+\.[\S]+$")
 PASS_RE = re.compile("^.{5,20}$")
 
 
-
-
-
 class SignUp(base.RequestHandler):
     def is_valid_name(self, username):
         if username and NAME_RE.match(username):
@@ -76,23 +73,18 @@ class SignUp(base.RequestHandler):
         first_name = self.request.get('first_name')
         last_name = self.request.get('last_name')
         email = self.request.get('email')
-        email_confirm = self.request.get('email_confirm')
         password = base.hash_str(self.request.get('password'))
         output_json = {}
-        # check validity of user name
         valid_name = self.is_valid_name(user_name)
         if not valid_name[0]:
             has_error = True
             output_json['user_name_error'] = valid_name[1]
 
-        # check validity of email
         valid_email = self.is_valid_email(email)
         if not valid_email[0]:
             has_error = True
             output_json['email_error'] = valid_email[1]
-        elif email != email_confirm:
-            has_error = True
-            output_json['email_error'] = 'Emails did not match.'
+    
 
         if has_error:
             output_json['status'] = 'ERR'

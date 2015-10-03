@@ -1,0 +1,47 @@
+public class Post{
+	String fname;
+	String username;
+	String time;
+	String post;
+	int imageid;	
+
+	public Post(String fname, String username,  String post, int imageid){
+		this.fname = fname;
+		this.username = username;
+    	time = new Date().toString();
+		this.post = post;
+		this.Imageid = Imageid;
+	}
+
+	public String getPoster(){
+		return this.fname;
+	}
+
+	
+	public String getPost(){
+		return this.post;
+	}
+
+	public String time(){
+		return this.time;
+	}
+
+	public String getImageId(){
+		return this.imageid;
+	}
+
+	public List getDummy(){
+		List a = new List();
+		a.add(new Post("Daka", "mji","I am muji", "12"));
+		a.add(new Post("Mote", "as_hs","I am asld", "2"));
+		a.add(new Post("Asl", "mjsadfi","Nepal", "12"));
+		a.add(new Post("Nepal_ Kas", "aasmita","I am Rnadi", "4"));
+		a.add(new Post("LAdo puti", "lol","I am kidding muji", "17"));
+
+
+
+	}
+
+
+}
+
