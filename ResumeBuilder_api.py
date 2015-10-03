@@ -20,5 +20,6 @@ class VirtualClassApi(remote.Service):
     def get_all_info(self, request):
         
         
-APPLICATION = endpoints.api_server([])
+        
+APPLICATION = endpoints.api_server([VirtualClassApi])
     

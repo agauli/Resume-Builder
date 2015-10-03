@@ -6,7 +6,7 @@ import resume
 import todo
 import user
 import lists
-
+import Post
 
 class MainPage(base.RequestHandler):
     def get(self, usr=None):
@@ -55,7 +55,7 @@ app = webapp2.WSGIApplication([
     ('/login', signup.Login),
     ('/question', Post.Question),
     ('/logout', signup.Logout),
-    ('/welcome', signup.ConfirmUserSignup),
+    #('/welcome', signup.ConfirmUserSignup),
     ('/resume', resume.Resume),
     (r'/resume/(.*)', resume.Resume),
     ('/resume_json', resume.GetJSON),
