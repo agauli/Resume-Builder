@@ -1,6 +1,20 @@
 from google.appengine.ext import db
 
-
+class Questions(db.Model):
+    user_name = db.StringProperty(required=True)
+    course_tag = db.StringProperty(required = True)
+    question = db.TextProperty(required =True)
+    date = db.DateTimeProperty(auto_now_add=True)
+    
+    @classmethod
+    def create(cls, user_name, course_tag, question, date):
+        return ShoppingList(
+            user_name=user_name,
+            course_tag=course_tag,
+            question = question,
+            date = date
+        )
+    
 class Publication(db.Model):
     user_name = db.StringProperty(required=True)
     title = db.StringProperty(required=True)
